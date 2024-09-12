@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Interactive Web Page</title>
+  <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #007bff;
+      margin: 0 auto;
+      position: relative;
+      border-radius: 10px;
+      animation: moveBox 5s infinite;
+    }
+
+    @keyframes moveBox {
+      0% {
+        top: 0;
+        background-color: #007bff;
+      }
+
+      50% {
+        top: 200px;
+        background-color: #28a745;
+      }
+
+      100% {
+        top: 0;
+        background-color: #007bff;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="interactive.html">Interactive Web</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Conference Registration</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ukflag.html">UK Flag</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="interactive.html">Interactive Web Page</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Interactive Web Page with Bootstrap</h1>
+
+    <!-- Animated Box -->
+    <div class="box"></div>
+
+    <!-- Show Modal Button -->
+    <div class="text-center mt-4">
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalExample">Open Modal</button>
+    </div>
+
+    <!-- Alert -->
+    <div class="alert alert-warning mt-4 d-none" id="alertMessage" role="alert">
+      This is a warning alert—check it out!
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalExample" tabindex="-1" aria-labelledby="modalExampleLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalExampleLabel">Modal Title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          This is a simple modal body.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function showAlert() {
+      var alert = document.getElementById('alertMessage');
+      alert.classList.remove('d-none');
+      setTimeout(function () {
+        alert.classList.add('d-none');
+      }, 3000); // Hide alert after 3 seconds
+    }
+  </script>
+</body>
+
+</html>

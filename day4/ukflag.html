@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+  <title>UK Flag</title>
+  <style>
+    .flag {
+      position: relative;
+      width: 300px;
+      height: 150px;
+      background-color: #00247d;
+      margin: 20px auto;
+      border: 2px solid #000;
+      overflow: hidden;
+    }
+
+    .cross {
+      position: absolute;
+      background-color: #fff;
+      z-index: 1;
+    }
+
+    /* White central cross */
+    .cross.vertical {
+      width: 50px;
+      height: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .cross.horizontal {
+      width: 100%;
+      height: 50px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* Red central stripes */
+    .red-stripe {
+      position: absolute;
+      background-color: #cf142b;
+    }
+
+    .red-stripe.vertical {
+      width: 30px;
+      height: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .red-stripe.horizontal {
+      width: 100%;
+      height: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+
+    /* White diagonal stripes */
+    .diagonal-white {
+      position: absolute;
+      background-color: #fff;
+      width: 20px;
+      height: 1000px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(66deg);
+    }
+
+    .diagonal-white.second {
+      transform: translate(-50%, -50%) rotate(-66deg);
+    }
+
+    /* Red diagonal stripes */
+    .diagonal-red {
+      position: absolute;
+      background-color: #cf142b;
+      width: 10px;
+      height: 1000px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(66deg);
+    }
+
+    .diagonal-red.second {
+      transform: translate(-50%, -50%) rotate(-66deg);
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="ukflag.html">UK Flag</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Conference Registration</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="ukflag.html">UK Flag</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="interactive.html">Interactive Web Page</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="flag">
+    <!-- White cross -->
+    <div class="cross vertical"></div>
+    <div class="cross horizontal"></div>
+
+    <!-- Red central cross -->
+    <div class="red-stripe vertical"></div>
+    <div class="red-stripe horizontal"></div>
+
+    <!-- White diagonal stripes -->
+    <div class="diagonal-white"></div>
+    <div class="diagonal-white second"></div>
+
+    <!-- Red diagonal stripes -->
+    <div class="diagonal-red"></div>
+    <div class="diagonal-red second"></div>
+  </div>
+
+  <script src="dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

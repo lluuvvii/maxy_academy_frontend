@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+  <title>Conference Registration</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Conference Registration</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Conference Registration</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ukflag.html">UK Flag</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="interactive.html">Interactive Web Page</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Conference Registration</h1>
+    <form>
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Your name..." required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="Your email..." required>
+      </div>
+      <div class="mb-3">
+        <label for="topic" class="form-label">Select a topic</label>
+        <select class="form-select" id="topic">
+          <option value="web-development">Web Development</option>
+          <option value="data-science">Data Science</option>
+          <option value="ui-ux-design">UI/UX Design</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success">Register</button>
+    </form>
+
+    <h2 class="text-center mt-5">List of Registered Participants</h2>
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Topic</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Doe</td>
+          <td>john@example.com</td>
+          <td>Web Development</td>
+        </tr>
+        <tr>
+          <td>Jane Smith</td>
+          <td>jane@example.com</td>
+          <td>Data Science</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
