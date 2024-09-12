@@ -10,12 +10,127 @@
 </head>
 
 <body>
-  <div class="container">
-    <h1>Hello, Bootstrap!</h1>
-    <p>This is a simple Bootstrap template.</p>
-  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Web Dev Fest 2024</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#speakers">Speakers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#schedule">Schedule</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <button type="button" class="btn btn-primary">Primary Button</button>
+  <header class="bg-danger text-white text-center py-5">
+    <div class="container">
+      <h1 class="display-4">Welcome to Web Development Festival 2024</h1>
+      <p class="lead">Join us for an amazing event filled with learning, coding, and networking!</p>
+      <a href="#about" class="btn btn-light btn-lg">Learn More</a>
+    </div>
+  </header>
+
+  <section id="about" class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <h2>About the Event</h2>
+          <p class="lead">The Web Development Festival 2024 brings together developers, designers, and tech enthusiasts
+            to explore the latest trends and technologies in web development. Attend workshops, listen to industry
+            leaders, and network with peers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="speakers" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center">Our Speakers</h2>
+      <div class="row mt-4">
+        <div class="col-md-4 text-center">
+          <img src="speaker1.jpg" alt="Speaker 1" class="img-fluid rounded-circle mb-3" style="width:150px;">
+          <h4>John Doe</h4>
+          <p>Front-End Developer</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="speaker2.jpg" alt="Speaker 2" class="img-fluid rounded-circle mb-3" style="width:150px;">
+          <h4>Jane Smith</h4>
+          <p>Back-End Developer</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="speaker3.jpg" alt="Speaker 3" class="img-fluid rounded-circle mb-3" style="width:150px;">
+          <h4>Chris Johnson</h4>
+          <p>Full-Stack Developer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="schedule" class="py-5">
+    <div class="container">
+      <h2 class="text-center">Event Schedule</h2>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Workshop: Building Responsive Websites
+          <span class="badge bg-danger rounded-pill">10:00 AM</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Keynote: Future of Web Development
+          <span class="badge bg-danger rounded-pill">12:00 PM</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Panel: Web Security Best Practices
+          <span class="badge bg-danger rounded-pill">02:00 PM</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center">Contact Us</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" id="message" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <p>© 2024 Web Development Festival. All Rights Reserved.</p>
+  </footer>
 
   <script src="dist/js/bootstrap.bundle.min.js"></script>
 </body>
