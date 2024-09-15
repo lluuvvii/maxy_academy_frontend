@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+  <title>Review Lokasi</title>
+  <style>
+    /* Tambahan CSS */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .map-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      background: #000;
+    }
+
+    .map-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .review-text {
+      background-color: #f8f9fa;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+    .rating {
+      font-size: 20px;
+      color: gold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="bg-danger text-white text-center p-4">
+    <h1>Review Lokasi Wisata</h1>
+  </header>
+
+  <div class="container mt-4">
+    <!-- Video Section -->
+    <div class="row mb-5">
+      <div class="col-12">
+        <h2 class="text-center mb-3">Video Lokasi</h2>
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/Scxs7L0vhZ4" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="row mb-5">
+      <div class="col-12">
+        <h2 class="text-center mb-3">Lokasi di Peta</h2>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.948344545131!2d-122.08424948469266!3d37.42199977982566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fba6b357c7f1f%3A0xa1f5f01ad17b9239!2sGoogleplex!5e0!3m2!1sen!2sus!4v1617102725426!5m2!1sen!2sus"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review Section -->
+    <div class="row mb-5">
+      <div class="col-md-6 mb-4">
+        <div class="review-text">
+          <h4>Review 1</h4>
+          <p>"Lokasi ini sangat indah, pemandangannya luar biasa. Sangat direkomendasikan untuk liburan keluarga."</p>
+          <div class="rating">Rating: ⭐⭐⭐⭐⭐</div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="review-text">
+          <h4>Review 2</h4>
+          <p>"Tempat ini sangat nyaman dan memiliki fasilitas yang lengkap. Akan berkunjung lagi!"</p>
+          <div class="rating">Rating: ⭐⭐⭐⭐⭐</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-danger text-white text-center p-3">
+    <p>© 2024 Website Review Lokasi. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
