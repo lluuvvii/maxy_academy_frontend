@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+  <title>Perhitungan Luas Lingkaran</title>
+  <style>
+    body {
+      padding-top: 50px;
+      background-color: #f8f9fa;
+    }
+    .result-box {
+      margin-top: 20px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1 class="text-center">Perhitungan Luas Lingkaran</h1>
+    <p class="text-center">Masukkan jari-jari lingkaran untuk menghitung luas lingkaran</p>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <!-- Form input -->
+        <div class="card p-4">
+          <div class="form-group mb-3">
+            <label for="radiusInput" class="form-label">Jari-jari (cm):</label>
+            <input type="number" class="form-control" id="radiusInput" placeholder="Masukkan jari-jari">
+          </div>
+          <button class="btn btn-danger w-100" onclick="calculateArea()">Hitung Luas</button>
+        </div>
+
+        <!-- Box untuk hasil perhitungan -->
+        <div class="result-box text-center" id="result" style="display: none;">
+          <h3>Hasil Perhitungan</h3>
+          <p>Luas lingkaran dengan jari-jari <span id="radiusValue"></span> cm adalah <strong><span id="areaValue"></span> cm²</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calculateArea() {
+      let radius = document.getElementById('radiusInput').value;
+
+      if (radius && radius > 0) {
+        let area = Math.PI * Math.pow(radius, 2);
+
+        // Tampilkan hasil
+        document.getElementById('radiusValue').innerText = radius;
+        document.getElementById('areaValue').innerText = area.toFixed(2);
+        document.getElementById('result').style.display = 'block';
+      } else {
+        alert("Masukkan nilai jari-jari yang valid");
+        document.getElementById('result').style.display = 'none';
+      }
+    }
+  </script>
+
+<script src="dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
