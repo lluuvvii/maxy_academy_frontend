@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filter dan Pengolahan Data Pengguna</title>
+  <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+  <style>
+    .container {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="text-center">Pengolahan Data Pengguna</h1>
+    <div class="mb-3">
+      <label for="searchName" class="form-label">Cari Nama:</label>
+      <input type="text" class="form-control" id="searchName" placeholder="Masukkan Nama Pengguna">
+    </div>
+    <div class="mb-3">
+      <label for="searchAge" class="form-label">Cari Usia:</label>
+      <input type="number" class="form-control" id="searchAge" placeholder="Masukkan Usia Pengguna">
+    </div>
+    <button class="btn btn-danger mb-4" id="filterButton">Filter</button>
+    <h2>Hasil Filter:</h2>
+    <ul class="list-group" id="resultList"></ul>
+  </div>
+
+  <script>
+    // Array berisi data pengguna
+    const users = [
+      { name: "Ali Akbar", age: 25, registered: true },
+      { name: "Rina Mawar", age: 30, registered: false },
+      { name: "Budi Setiawan", age: 22, registered: true },
+      { name: "Cinta Kirana", age: 27, registered: false },
+      { name: "Dewi Anggraeni", age: 35, registered: true }
+    ];
+
+    // Fungsi untuk memfilter pengguna berdasarkan nama dan usia
+    const filterUsers = (name, age) => {
+      return users.filter(user => {
+        const nameMatch = name ? user.name.toLowerCase().includes(name.toLowerCase()) : true;
+        const ageMatch = age ? user.age == age : true;
+        return nameMatch && ageMatch;
+      });
+    };
+
+    // Fungsi untuk menampilkan hasil filter
+    const displayResults = (users) => {
+      const resultList = document.getElementById("resultList");
+      resultList.innerHTML = ""; // Hapus hasil sebelumnya
+
+      if (users.length > 0) {
+        users.forEach(user => {
+          const li = document.createElement("li");
+          li.className = "list-group-item";
+
+          // Menggunakan string manipulation untuk membuat informasi pengguna
+          let userInfo = `Nama: ${user.name}, Usia: ${user.age} tahun`;
+
+          // Object conditional untuk menambahkan status pendaftaran
+          if (user.registered) {
+            userInfo += " - Sudah Terdaftar";
+          } else {
+            userInfo += " - Belum Terdaftar";
+          }
+
+          li.textContent = userInfo;
+          resultList.appendChild(li);
+        });
+      } else {
+        resultList.innerHTML = "<li class='list-group-item'>Tidak ada pengguna yang sesuai.</li>";
+      }
+    };
+
+    // Event listener untuk tombol filter
+    document.getElementById("filterButton").addEventListener("click", () => {
+      const name = document.getElementById("searchName").value;
+      const age = document.getElementById("searchAge").value;
+      const filteredUsers = filterUsers(name, age);
+      displayResults(filteredUsers);
+    });
+
+    // Tampilkan semua data pengguna saat halaman pertama kali dimuat
+    window.onload = () => {
+      displayResults(users); // Menampilkan semua data pengguna saat load pertama
+    };
+  </script>
+
+  <script src="dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
