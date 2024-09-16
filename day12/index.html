@@ -52,16 +52,16 @@
   <script>
     function convertArrayToJSON() {
       // Ambil nilai input dari pengguna
-      var arrayInput = document.getElementById('arrayInput').value;
+      let arrayInput = document.getElementById('arrayInput').value;
 
       // Pecah string input menjadi array berdasarkan koma
-      var array = arrayInput.split(',');
+      let array = arrayInput.split(',');
 
       // Buat object kosong dan gabungkan dengan array menggunakan Object.assign
-      var object = Object.assign({}, array);
+      let object = Object.assign({}, array);
 
       // Ubah object menjadi string JSON menggunakan JSON.stringify
-      var jsonString = JSON.stringify(object, null, 2);
+      let jsonString = JSON.stringify(object, null, 2);
 
       // Tampilkan hasil JSON
       document.getElementById('jsonResult').textContent = jsonString;
