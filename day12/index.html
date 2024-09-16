@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Array to JSON Converter</title>
+  <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+  <style>
+    body {
+      padding-top: 50px;
+      background-color: #f8f9fa;
+    }
+
+    .result-box {
+      margin-top: 20px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1 class="text-center">Array to JSON Converter</h1>
+    <p class="text-center">Masukkan elemen array untuk mengubahnya menjadi objek JSON</p>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <!-- Form input -->
+        <div class="card p-4">
+          <div class="form-group mb-3">
+            <label for="arrayInput" class="form-label">Masukkan Array (pisahkan dengan koma):</label>
+            <input type="text" class="form-control" id="arrayInput" placeholder="Contoh: apple,banana,orange">
+          </div>
+          <button class="btn btn-danger w-100" onclick="convertArrayToJSON()">Ubah ke JSON</button>
+        </div>
+
+        <!-- Box untuk hasil JSON -->
+        <div class="result-box text-center" id="result" style="display: none;">
+          <h3>Hasil JSON</h3>
+          <pre id="jsonResult" style="text-align: left;"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function convertArrayToJSON() {
+      // Ambil nilai input dari pengguna
+      var arrayInput = document.getElementById('arrayInput').value;
+
+      // Pecah string input menjadi array berdasarkan koma
+      var array = arrayInput.split(',');
+
+      // Buat object kosong dan gabungkan dengan array menggunakan Object.assign
+      var object = Object.assign({}, array);
+
+      // Ubah object menjadi string JSON menggunakan JSON.stringify
+      var jsonString = JSON.stringify(object, null, 2);
+
+      // Tampilkan hasil JSON
+      document.getElementById('jsonResult').textContent = jsonString;
+      document.getElementById('result').style.display = 'block';
+
+      // Debug hasil di console
+      console.debug("Array:", array);
+      console.debug("Object:", object);
+      console.debug("JSON String:", jsonString);
+    }
+  </script>
+
+  <script src="dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
