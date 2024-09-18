@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login with Firebase</title>
+  <!-- Framework7 Core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/framework7@7.0.0/css/framework7.bundle.min.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Firebase SDK -->
+  <script type="module" src="firebaseauth.js"></script>
+</head>
+
+<body>
+  <div id="app" class="container">
+    <div id="loginPage" class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title text-center">Login</h2>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter email">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <button id="loginBtn" class="btn btn-primary w-100">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="homePage" class="row justify-content-center" style="display: none;">
+      <div class="col-md-6 col-lg-4">
+        <div class="card">
+          <div class="card-body text-center">
+            <h2>Welcome to Our Website</h2>
+            <p>This website uses Firebase Authentication and Bootstrap for UI design.</p>
+            <button id="logoutBtn" class="btn btn-danger w-100">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Framework7 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/framework7@7.0.0/js/framework7.bundle.min.js"></script>
+  <!-- Firebase CDN -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"></script> -->
+
+  <!-- Firebase Initialization -->
+  <script>
+    // Firebase configuration
+    // const firebaseConfig = {
+    //   apiKey: "AIzaSyDJF9-uljJ8YbcY_n4UJUV_k_fLFWitNE4",
+    //   authDomain: "auth-framework7-a2f46.firebaseapp.com",
+    //   databaseURL: "YOUR_DATABASE_URL",
+    //   projectId: "auth-framework7-a2f46",
+    //   storageBucket: "auth-framework7-a2f46.appspot.com",
+    //   messagingSenderId: "655126978634",
+    //   appId: "1:655126978634:web:d49115733134b55209c6b3"
+    // };
+
+    // Initialize Firebase
+    // const app = firebase.initializeApp(firebaseConfig);
+    // const auth = firebase.auth();
+    // const database = firebase.database();
+  </script>
+
+  <script>
+    // const app = firebase.initializeApp(firebaseConfig);
+    // const auth = firebase.auth();
+    // const database = firebase.database();
+    // // Login button event listener
+    // document.getElementById('loginBtn').addEventListener('click', function () {
+    //   const email = document.getElementById('email').value;
+    //   const password = document.getElementById('password').value;
+
+    //   auth.signInWithEmailAndPassword(email, password)
+    //     .then(userCredential => {
+    //       // Hide login page and show home page after successful login
+    //       document.getElementById('loginPage').style.display = 'none';
+    //       document.getElementById('homePage').style.display = 'block';
+    //     })
+    //     .catch(error => {
+    //       // Log the error during login process
+    //       console.error('Error during login:', error);
+    //     });
+    // });
+
+    // // Logout button event listener
+    // document.getElementById('logoutBtn').addEventListener('click', function () {
+    //   auth.signOut()
+    //     .then(() => {
+    //       // Show login page and hide home page after logout
+    //       document.getElementById('loginPage').style.display = 'block';
+    //       document.getElementById('homePage').style.display = 'none';
+    //     })
+    //     .catch(error => {
+    //       // Log the error during logout process
+    //       console.error('Error during logout:', error);
+    //     });
+    // });
+
+    // // Check for authentication state changes
+    // auth.onAuthStateChanged(user => {
+    //   if (user) {
+    //     // User is signed in, show home page
+    //     document.getElementById('loginPage').style.display = 'none';
+    //     document.getElementById('homePage').style.display = 'block';
+    //   } else {
+    //     // User is signed out, show login page
+    //     document.getElementById('loginPage').style.display = 'block';
+    //     document.getElementById('homePage').style.display = 'none';
+    //   }
+    // });
+  </script>
+
+</body>
+
+</html>
