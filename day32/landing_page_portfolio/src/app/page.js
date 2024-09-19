@@ -1,11 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Portfolio - John Doe</title>
+        <title>Portfolio - I Love Shollakhuddin Kurniawan</title>
         <meta name="description" content="John Doe's Personal Portfolio" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -40,20 +41,23 @@ export default function Home() {
               {/* Portfolio Item */}
               <div className="bg-gray-200 p-4 rounded-lg shadow-lg">
                 <Image src="/img/Screenshot(604).png" alt="Portfolio 1" className="w-full h-40 object-cover rounded-lg" width={200} height={200} />
-                <h3 className="mt-4 font-bold">Project Title 1</h3>
-                <p className="mt-2 text-gray-600">Short description of the project.</p>
+                <h3 className="mt-4 font-bold">Main personal web</h3>
+                <p className="mt-2 text-gray-600">My main personal web using nextjs (under development)</p>
+                <Link href="https://luvi-kurniawan.vercel.app">Go to site</Link>
               </div>
               {/* Portfolio Item */}
               <div className="bg-gray-200 p-4 rounded-lg shadow-lg">
                 <Image src="/img/Screenshot(605).png" alt="Portfolio 2" className="w-full h-40 object-cover rounded-lg" width={200} height={200} />
-                <h3 className="mt-4 font-bold">Project Title 2</h3>
-                <p className="mt-2 text-gray-600">Short description of the project.</p>
+                <h3 className="mt-4 font-bold">Go Promptopia</h3>
+                <p className="mt-2 text-gray-600">Simple CRUD prompt ai source template fullstack nextjs</p>
+                <Link href="https://go-promptopia.vercel.app">Go to site</Link>
               </div>
               {/* Portfolio Item */}
               <div className="bg-gray-200 p-4 rounded-lg shadow-lg">
                 <Image src="/img/Screenshot(606).png" alt="Portfolio 3" className="w-full h-40 object-cover rounded-lg" width={200} height={200} />
-                <h3 className="mt-4 font-bold">Project Title 3</h3>
-                <p className="mt-2 text-gray-600">Short description of the project.</p>
+                <h3 className="mt-4 font-bold">Forumophic</h3>
+                <p className="mt-2 text-gray-600">Forumophic is a forum website using nextjs and laravel</p>
+                <Link href="https://forumophic.vercel.app">Go to site</Link>
               </div>
             </div>
           </div>
@@ -83,7 +87,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="bg-gray-800 text-gray-400 py-8 text-center">
-          <p>&copy; 2024 John Doe. All Rights Reserved.</p>
+          <p>&copy; 2024 I Love Shollakhuddin Kurniawan. All Rights Reserved.</p>
         </footer>
       </main>
     </>
