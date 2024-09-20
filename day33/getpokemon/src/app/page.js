@@ -33,7 +33,18 @@ export default function Home() {
   return (
     <div className="d-flex flex-column min-vh-100">
       <div className="container text-center mt-5">
-        <h1 className="mb-4">Welcome to Pokemon Gacha</h1>
+        <h2
+          className="mb-4"
+          style={{
+            color: '#ff6347', // Warna merah tomat
+            fontSize: '2.5rem', // Ukuran font lebih besar
+            fontFamily: 'Arial, sans-serif', // Font keluarga
+            textAlign: 'center', // Pusatkan teks
+            fontWeight: 'bold', // Tebalkan teks
+          }}
+        >
+          Welcome to Get Pokemon
+        </h2>
 
         {/* Form submission */}
         <Row className="mt-3 d-flex justify-content-center">
