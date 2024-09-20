@@ -1,23 +1,28 @@
-"use client"
+"use client";
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import { Button, Form, Spinner } from 'react-bootstrap';
+import { Button, Form, Spinner, Card, Row, Col, Table, Container } from 'react-bootstrap';
 
 export default function Home() {
   const [name, setName] = useState('');
   const [pokemon, setPokemon] = useState(null);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
+  // Fetch Pokemon from API
   const fetchPokemon = async () => {
     setLoading(true);
-    const randomId = Math.floor(Math.random() * 150) + 1;
+    const randomId = Math.floor(Math.random() * 150) + 1; // Random Pokemon ID 1-150
     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
     setPokemon(response.data);
     setLoading(false);
   };
 
-  const handleGacha = () => {
+  // Handle form submission
+  const handleGacha = (e) => {
+    e.preventDefault(); // Prevent page reload on form submit
     if (name) {
       fetchPokemon();
     } else {
@@ -26,49 +31,76 @@ export default function Home() {
   };
 
   return (
-    <div className="container text-center mt-5">
-      <h1 className="mb-4">Welcome to Getpokemon</h1>
-      
-      <Form>
-        <Form.Group className="mb-3">
-          <Form.Label>Enter your name</Form.Label>
-          <Form.Control 
-            type="text" 
-            placeholder="Enter name" 
-            value={name} 
-            onChange={(e) => setName(e.target.value)} 
-          />
-        </Form.Group>
+    <div className="d-flex flex-column min-vh-100">
+      <div className="container text-center mt-5">
+        <h1 className="mb-4">Welcome to Pokemon Gacha</h1>
 
-        <Button 
-          variant="danger" 
-          onClick={handleGacha} 
-          disabled={loading}
-        >
-          {loading ? <Spinner as="span" animation="border" size="sm" /> : "Start Gacha"}
-        </Button>
-      </Form>
+        {/* Form submission */}
+        <Row className="mt-3 d-flex justify-content-center">
+          <Col md={4}>
+            <Form onSubmit={handleGacha}>
+              <Form.Group className="mb-3">
+                <Form.Label>Enter your name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  disabled={loading} // Disable input when loading
+                />
+              </Form.Group>
 
-      {pokemon && (
-        <div className="mt-5">
-          <h3>Congratulations {name}!</h3>
-          <div className="pokemon-result card mt-3 mx-auto" style={{ width: '18rem' }}>
-            <img 
-              src={pokemon.sprites.front_default} 
-              alt={pokemon.name} 
-              className="card-img-top img-fluid" 
-            />
-            <div className="card-body">
-              <h5 className="card-title">{pokemon.name.toUpperCase()}</h5>
-              <p className="card-text">
-                Height: {pokemon.height} decimetres<br />
-                Weight: {pokemon.weight} hectograms<br />
-                Type: {pokemon.types.map(type => type.type.name).join(', ')}
-              </p>
-            </div>
+              {/* Submit button */}
+              <Button
+                type="submit"
+                variant="danger"
+                disabled={loading} // Disable button when loading
+              >
+                {loading ? <Spinner as="span" animation="border" size="sm" /> : "Start Gacha"}
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+        {/* Display Pokemon results */}
+        {pokemon && (
+          <div className="mt-5">
+            <h3>Congratulations {name}!</h3>
+
+            <Row className="mt-3 d-flex justify-content-center">
+              {/* Basic Info Section */}
+              <Col md={4}>
+                <Card>
+                  <Card.Img variant="top" src={pokemon.sprites.front_default} alt={pokemon.name} />
+                  <Card.Body>
+                    <Card.Title>{pokemon.name.toUpperCase()}</Card.Title>
+                    <Card.Text>
+                      <strong>Height:</strong> {pokemon.height} dm<br />
+                      <strong>Weight:</strong> {pokemon.weight} hg<br />
+                      <strong>Type:</strong> {pokemon.types.map(type => type.type.name).join(', ')}
+                    </Card.Text>
+
+                    {/* View Details Button */}
+                    <Button className='mt-3' variant="danger" onClick={() => router.push(`/pokemon/${pokemon.id}`)}>
+                      View Details
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
           </div>
-        </div>
-      )}
+        )}
+      </div>
+
+      {/* Footer */}
+      <footer className="mt-3 bg-light py-3">
+        <Container>
+          <Row>
+            <Col md={12} className="text-center">
+              <p className="mb-0">© 2024 Get Pokemon. All Rights Reserved.</p>
+            </Col>
+          </Row>
+        </Container>
+      </footer>
     </div>
   );
 }
