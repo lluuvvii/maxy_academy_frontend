@@ -1,37 +1,37 @@
-import { Tabs } from 'expo-router';
 import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import HomeScreen from '../screens/HomeScreen';
+import AboutScreen from '../screens/AboutScreen';
+import ServicesScreen from '../screens/ServicesScreen';
+import { AntDesign } from '@expo/vector-icons';
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+const Tab = createBottomTabNavigator();
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function Layout() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color, size }: { color: string; size: number }) => {
+          // let iconName = "home"
+          // if (route.name === 'Home') {
+          //   iconName = 'home';
+          // } else if (route.name === 'About') {
+          //   iconName = 'infocirlceo';
+          // } else if (route.name === 'Services') {
+          //   iconName = 'appstore-o';
+          // }
+          // if (iconName) {
+            return <AntDesign name={route.name === "Home" ? "home" : route.name === "About" ? "infocirlceo" : "appstore-o"} size={size} color={color} />;
+          // }
+        },
+        tabBarActiveTintColor: '#4c669f',
+        tabBarInactiveTintColor: 'gray',
+      })}
+    >
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="About" component={AboutScreen} />
+      <Tab.Screen name="Services" component={ServicesScreen} />
+    </Tab.Navigator>
   );
 }
