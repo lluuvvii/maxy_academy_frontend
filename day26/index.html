@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon Chart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <style>
+    body {
+      padding: 20px;
+    }
+
+    #chart-container {
+      width: 80%;
+      margin: auto;
+    }
+
+    #loading {
+      display: none;
+      text-align: center;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="ui container">
+    <h2 class="ui header">Pokémon Stats Chart</h2>
+    <div id="chart-container">
+      <canvas id="pokemonChart"></canvas>
+    </div>
+    <div class="ui pagination menu" id="pagination">
+      <a class="item" id="prevBtn">Previous</a>
+      <a class="item" id="nextBtn">Next</a>
+    </div>
+    <div id="loading">Loading...</div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  <script>
+    const limit = 10;
+    let offset = 0;
+    let totalPokemons = 0;
+    let totalPages = 0;
+    let pokemonChart;
+
+    function fetchPokemonData() {
+      $('#loading').show();
+      $('#prevBtn').addClass('disabled');
+      $('#nextBtn').addClass('disabled');
+
+      $.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`, function (data) {
+        totalPokemons = data.count;
+        totalPages = Math.ceil(totalPokemons / limit);
+        const pokemonNames = data.results.map(p => p.name);
+        const promises = data.results.map(p => $.get(`https://pokeapi.co/api/v2/pokemon/${p.name}`));
+
+        Promise.all(promises).then(pokemonData => {
+          const hpData = pokemonData.map(p => p.stats[0].base_stat); // HP data
+          const attackData = pokemonData.map(p => p.stats[1].base_stat); // Attack data
+          const defenseData = pokemonData.map(p => p.stats[2].base_stat); // Defense data
+
+          if (pokemonChart) {
+            pokemonChart.destroy();
+          }
+
+          const ctx = document.getElementById('pokemonChart').getContext('2d');
+          pokemonChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: pokemonNames,
+              datasets: [
+                {
+                  label: 'HP',
+                  data: hpData,
+                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                  borderColor: 'rgba(75, 192, 192, 1)',
+                  borderWidth: 1
+                },
+                {
+                  label: 'Attack',
+                  data: attackData,
+                  backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                  borderColor: 'rgba(255, 99, 132, 1)',
+                  borderWidth: 1
+                },
+                {
+                  label: 'Defense',
+                  data: defenseData,
+                  backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                  borderColor: 'rgba(153, 102, 255, 1)',
+                  borderWidth: 1
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+
+          updatePagination();
+          $('#loading').hide();
+          $('#prevBtn').removeClass('disabled');
+          $('#nextBtn').removeClass('disabled');
+        });
+      });
+    }
+
+    function updatePagination() {
+      $('#prevBtn').toggle(offset > 0);
+      $('#nextBtn').toggle(offset + limit < totalPokemons);
+    }
+
+    $(document).ready(function () {
+      fetchPokemonData();
+
+      $('#prevBtn').on('click', function () {
+        if (offset > 0) {
+          offset -= limit;
+          fetchPokemonData();
+        }
+      });
+
+      $('#nextBtn').on('click', function () {
+        if (offset + limit < totalPokemons) {
+          offset += limit;
+          fetchPokemonData();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
