@@ -4,7 +4,7 @@ import { View, Text } from 'react-native-ui-lib';
 const Header = () => {
   return (
     <View paddingV-20 center style={{ backgroundColor: '#6200ee' }}>
-      <Text white text40>Company Name</Text>
+      <Text white text40>InnovateTech</Text>
     </View>
   );
 };
