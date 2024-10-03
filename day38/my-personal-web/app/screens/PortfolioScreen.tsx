@@ -5,9 +5,9 @@ import PortfolioCard from '../../components/PortfolioCard';
 const PortfolioScreen = () => {
   return (
     <View flex padding-20>
-      <Text text40>My Portfolio</Text>
-      <PortfolioCard title="Project 1" description="A mobile app built with React Native" />
-      <PortfolioCard title="Project 2" description="A web app built with Next.js" />
+      <Text text40 marginB-20>My Portfolio</Text>
+      <PortfolioCard title="My Personal web" description="A personal web app built with Next.js" url='https://luvi-kurniawan.vercel.app' />
+      <PortfolioCard title="Go Promptopia" description="Prompt AI sources community" url='https://go-promptopia.vercel.app' />
     </View>
   );
 };
