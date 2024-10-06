@@ -1,14 +1,23 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
+// import { NavigationContainer } from '@react-navigation/native';
+
+import BMICalculator from './screens/BMICalculator';
+import WeatherInfo from './screens/WeatherInfo';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { SafeAreaView } from 'react-native';
+import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+
+const Tab = createBottomTabNavigator();
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -28,10 +37,28 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Tab.Navigator initialRouteName="screens/BMICalculator">
+          <Tab.Screen
+            options={{
+              title: "BMI Calculator",
+              tabBarIcon: ({ color, focused }) => (
+                <TabBarIcon name={focused ? 'calculator' : 'calculator-outline'} color={color} />
+              )
+            }}
+            name="screens/BMICalculator"
+            component={BMICalculator} />
+          <Tab.Screen
+            options={{
+              title: "Weather Information",
+              tabBarIcon: ({ color, focused }) => (
+                <TabBarIcon name={focused ? 'cloudy-night' : 'cloudy-night-outline'} color={color} />
+              )
+            }}
+            name="screens/WeatherInfo"
+            component={WeatherInfo} />
+        </Tab.Navigator>
+      </SafeAreaView>
     </ThemeProvider>
   );
 }
