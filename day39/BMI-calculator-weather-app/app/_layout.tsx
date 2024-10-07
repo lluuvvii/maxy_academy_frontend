@@ -9,6 +9,7 @@ import 'react-native-reanimated';
 
 import BMICalculator from './screens/BMICalculator';
 import WeatherInfo from './screens/WeatherInfo';
+import Calculator from './screens/Calculator';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { SafeAreaView } from 'react-native';
@@ -48,6 +49,15 @@ export default function RootLayout() {
             }}
             name="screens/BMICalculator"
             component={BMICalculator} />
+          <Tab.Screen
+            options={{
+              title: "Calculator",
+              tabBarIcon: ({ color, focused }) => (
+                <TabBarIcon name={focused ? 'calculator' : 'calculator-outline'} color={color} />
+              )
+            }}
+            name="screens/Calculator"
+            component={Calculator} />
           <Tab.Screen
             options={{
               title: "Weather Information",
