@@ -14,6 +14,7 @@ import Calculator from './screens/Calculator';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { SafeAreaView } from 'react-native';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+import { AntDesign } from '@expo/vector-icons';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -42,9 +43,9 @@ export default function RootLayout() {
         <Tab.Navigator initialRouteName="screens/BMICalculator">
           <Tab.Screen
             options={{
-              title: "BMI Calculator",
+              title: "BMI calculator",
               tabBarIcon: ({ color, focused }) => (
-                <TabBarIcon name={focused ? 'calculator' : 'calculator-outline'} color={color} />
+                <AntDesign name="calculator" size={24} color="black" />
               )
             }}
             name="screens/BMICalculator"
