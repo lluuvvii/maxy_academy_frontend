@@ -14,9 +14,7 @@
   const siteDocsVersion = searchElement.getAttribute('data-bd-docs-version')
 
   window.docsearch({
-    apiKey: '3151f502c7b9e9dafd5e6372b691a24e',
     indexName: 'bootstrap',
-    appId: 'AK7KMZKZHQ',
     container: searchElement,
     searchParameters: {
       facetFilters: [`version:${siteDocsVersion}`]
